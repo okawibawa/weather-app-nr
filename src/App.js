@@ -21,7 +21,7 @@ function App() {
         country: state.country,
       });
 
-      setData(result.data);
+      setData([result.data]);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -77,49 +77,49 @@ function App() {
         </form>
 
         {!loading ? (
-          data.length > 0 || data ? (
+          data.length > 0 ? (
             <>
               <h3>Current Weather Information</h3>
               <div style={{ width: '50%', display: 'flex', textAlign: 'left' }}>
                 <h6 style={{ width: '160px' }}>City </h6>
-                <h6>: {data.name}</h6>
+                <h6>: {data[0].name}</h6>
               </div>
               <div style={{ width: '50%', display: 'flex', textAlign: 'left' }}>
                 <h6 style={{ width: '160px' }}>Country</h6>
-                <h6>: {data.sys.country}</h6>
+                <h6>: {data[0].sys.country}</h6>
               </div>
               <div style={{ width: '50%', display: 'flex', textAlign: 'left' }}>
                 <h6 style={{ width: '160px' }}>Weather</h6>
-                <h6>: {data.weather[0].main}</h6>
+                <h6>: {data[0].weather[0].main}</h6>
               </div>
               <div style={{ width: '50%', display: 'flex', textAlign: 'left' }}>
                 <h6 style={{ width: '160px' }}>Description</h6>
-                <h6>: {data.weather[0].description.replace(/(^|\s)[A-Za-zÀ-ÖØ-öø-ÿ]/g, (c) => c.toUpperCase())}</h6>
+                <h6>: {data[0].weather[0].description}</h6>
               </div>
 
               <div style={{ width: '50%', display: 'flex', textAlign: 'left' }}>
                 <h6 style={{ width: '160px' }}>Temperature</h6>
-                <h6>: {Math.round(data.main.temp - 273.15)}℃</h6>
+                <h6>: {Math.round(data[0].main.temp - 273.15)}℃</h6>
               </div>
 
               <div style={{ width: '50%', display: 'flex', textAlign: 'left' }}>
                 <h6 style={{ width: '160px' }}>Feels Like</h6>
-                <h6>: {Math.round(data.main.feels_like - 273.15)}℃</h6>
+                <h6>: {Math.round(data[0].main.feels_like - 273.15)}℃</h6>
               </div>
 
               <div style={{ width: '50%', display: 'flex', textAlign: 'left' }}>
                 <h6 style={{ width: '160px' }}>Humidity</h6>
-                <h6>: {data.main.humidity}%</h6>
+                <h6>: {data[0].main.humidity}%</h6>
               </div>
 
               <div style={{ width: '50%', display: 'flex', textAlign: 'left' }}>
                 <h6 style={{ width: '160px' }}>Wind Speed</h6>
-                <h6>: {data.wind.speed}</h6>
+                <h6>: {data[0].wind.speed}</h6>
               </div>
 
               <div style={{ width: '50%', display: 'flex', textAlign: 'left' }}>
                 <h6 style={{ width: '160px' }}>Wind Degree</h6>
-                <h6>: {data.wind.deg}°</h6>
+                <h6>: {data[0].wind.deg}°</h6>
               </div>
             </>
           ) : (
